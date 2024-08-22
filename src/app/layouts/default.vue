@@ -1,15 +1,22 @@
 <script setup lang="ts">
-
+import { LayoutAside } from '@/widgets/layout-aside';
 </script>
 
 <template>
   <div class="default-layout">
-    <slot />
+    <layout-aside />
+    <div class="default-layout__content">
+      <slot />
+    </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .default-layout {
-  @apply flex items-center w-full justify-center h-screen;
+  @apply flex w-full h-screen;
+
+  &__content {
+    @apply h-full overflow-y-auto w-full;
+  }
 }
 </style>
