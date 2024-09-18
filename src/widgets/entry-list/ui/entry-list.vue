@@ -2,7 +2,7 @@
 import { type EntryResponseType, useEntryStore } from '@/entities/entry';
 import { ListItem } from '@/entities/list-item';
 
-const entryStore = useEntryStore();
+const page = ref(1);
 
 const props = defineProps<{
   entries: EntryResponseType;
@@ -17,7 +17,7 @@ const props = defineProps<{
         v-for="item in entries.data"
         :key="item.id"
         :title="item.title"
-        :slug="'/entry/' + item.slug"
+        :slug="item.slug"
         :date="item.publishedAt"
         v-model:is-deleted="item.isDeleted"
       />
@@ -26,6 +26,11 @@ const props = defineProps<{
 </template>
 
 <style scoped lang="scss">
+.entry-list {
+  &__pagination {
+    @apply sticky bottom-0 z-50 flex items-center justify-center;
+  }
+}
 .entries {
   @apply p-2;
 }

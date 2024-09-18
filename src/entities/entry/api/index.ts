@@ -1,8 +1,12 @@
 import { mainApi } from '@/shared/api';
-import type { EntryParams } from '@/entities/entry';
+import type { EntryParams, EntryType } from '@/entities/entry';
 
-export const findEntry = async (slug: string, params?: EntryParams) => {
-  return await mainApi.get('/api/entry' + slug, { params });
+export const findEntry = async (
+  slug: string,
+  params?: EntryParams
+): Promise<EntryType> => {
+  const { data } = await mainApi.get('/api/entry/' + slug, { params });
+  return data;
 };
 
 export const findEntries = async (params?: EntryParams) => {
@@ -11,9 +15,9 @@ export const findEntries = async (params?: EntryParams) => {
 };
 
 export const patchEntry = async (slug: string, data: any): Promise<any> => {
-  return await mainApi.patch('/api/entry' + slug, data);
+  return await mainApi.patch('/api/entry/' + slug, data);
 };
 
 export const postEntry = async (data: any) => {
-  return await mainApi.post('/api/entry', data);
+  return await mainApi.post('/api/entry/', data);
 };

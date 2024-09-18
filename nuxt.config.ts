@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   ssr: false,
   alias: { '@': '../src' },
@@ -11,12 +12,26 @@ export default defineNuxtConfig({
         defineModel: true,
       },
     },
+    server: {
+      proxy: {
+        '/site': {
+          target: 'http://static.infomania.ru/',
+          changeOrigin: true,
+        },
+        '/media': {
+          target: 'http://static.infomania.ru/site',
+          changeOrigin: true,
+        },
+      },
+    },
   },
   dir: {
     pages: './src/app/routes',
     layouts: './src/app/layouts',
+    middleware: './src/app/middleware',
+    plugins: './src/app/plugins',
   },
-  css: ['~/src/app/main.css'],
+  css: ['~/src/app/main.css', '~/src/app/styles/datepicker.css'],
   postcss: {
     plugins: {
       tailwindcss: {},

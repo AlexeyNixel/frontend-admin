@@ -14,7 +14,7 @@ const search = defineModel();
       class="header__create-link"
       label="Создать"
       color="red"
-      @click="navigateTo('/')"
+      @click="navigateTo(props.createLink)"
     />
     <UInput
       class="header__search-input"
@@ -28,7 +28,7 @@ const search = defineModel();
 
 <style scoped lang="scss">
 .header {
-  @apply bg-[#202531] flex h-[73px] px-2 text-white border-l-2 border-[#272E3B] items-center;
+  @apply bg-[#202531] z-20 flex h-[73px] px-2 text-white border-l-2 border-[#272E3B] items-center;
 
   &__title {
     @apply text-2xl font-bold;

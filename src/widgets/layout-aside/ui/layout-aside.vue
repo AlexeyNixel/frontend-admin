@@ -2,10 +2,11 @@
 import { useDark, useToggle } from '@vueuse/core';
 import { AsideGroup } from '@/entities/aside-group';
 import { useRouter } from 'vue-router';
+import { useAuthorizationStore } from '@/features/authorization';
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
-const router = useRouter();
+const authStore = useAuthorizationStore();
 
 const metricGroupChild = [
   {
@@ -31,12 +32,12 @@ const recordsGroupChild = [
   {
     icon: 'heroicons:document-text',
     text: 'Документы',
-    event: () => undefined,
+    event: () => navigateTo('/document'),
   },
   {
     icon: 'heroicons:building-office-2',
     text: 'Отделы',
-    event: () => undefined,
+    event: () => navigateTo('/department'),
   },
   {
     icon: 'heroicons:photo',
@@ -74,6 +75,10 @@ const recordsGroupChild = [
     event: () => undefined,
   },
 ];
+
+onMounted(() => {
+  // user.value = localStorage.getItem('username') || undefined;
+});
 </script>
 
 <template>
@@ -82,6 +87,9 @@ const recordsGroupChild = [
     <aside-group title="Метрики" :buttons="metricGroupChild" />
     <aside-group title="Тема" :buttons="themeGroupChild" />
     <aside-group title="Записи" :buttons="recordsGroupChild" />
+    <div class="username" v-if="authStore.username">
+      Привет, {{ authStore.username }}!
+    </div>
   </aside>
 </template>
 
@@ -91,6 +99,10 @@ const recordsGroupChild = [
 
   .logo {
     @apply text-4xl font-bold text-white mt-4 w-full text-center pb-4 border-b-2 border-[#272E3B];
+  }
+
+  .username {
+    @apply text-white mr-4 mb-4 flex self-end items-end absolute bottom-0;
   }
 }
 </style>

@@ -8,6 +8,9 @@ import { LayoutAside } from '@/widgets/layout-aside';
     <div class="default-layout__content">
       <slot />
     </div>
+    <div class="notification">
+      <UNotifications />
+    </div>
   </div>
 </template>
 
@@ -17,6 +20,10 @@ import { LayoutAside } from '@/widgets/layout-aside';
 
   &__content {
     @apply h-full overflow-y-auto w-full;
+  }
+
+  .notification {
+    @apply absolute top-0;
   }
 }
 </style>

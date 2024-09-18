@@ -17,14 +17,18 @@ const isDeleted = defineModel<boolean>('isDeleted');
 
 const hideElement = async () => {
   if (isDeleted.value !== undefined) {
-    return deleteModel(`/api${props.slug}`, isDeleted.value);
+    return deleteModel(`/api/${props.model}/${props.slug}`, isDeleted.value);
   }
 };
 </script>
 
 <template>
   <div class="list-item">
-    <div class="list-item__field list-item__field--long">{{ title }}</div>
+    <nuxt-link
+      :to="`/${model}/update/${slug}`"
+      class="list-item__field list-item__field--long"
+      >{{ title }}</nuxt-link
+    >
     <div class="list-item__field list-item__field--font" v-if="date">
       {{ dayjs(date).format('DD.MM.YYYY') }}
     </div>
@@ -48,7 +52,7 @@ const hideElement = async () => {
     <nuxt-link
       class="list-item__field"
       v-if="slug"
-      :to="`http://dev.infomania.ru` + slug"
+      :to="`http://dev.infomania.ru/${model}/${slug}`"
       external
       target="_blank"
     >
@@ -60,9 +64,10 @@ const hideElement = async () => {
 <style scoped lang="scss">
 .list-item {
   @apply flex bg-white dark:bg-slate-800 p-2 mb-2 rounded-md;
+  @apply hover:bg-neutral-300 hover:dark:bg-slate-900 transition;
 
   &__field {
-    @apply w-1/6 flex items-center justify-center;
+    @apply w-1/6 z-10 flex items-center justify-center;
 
     &--long {
       @apply w-full text-left justify-start;

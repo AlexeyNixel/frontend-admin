@@ -3,6 +3,8 @@ export interface EntryParams {
   page?: number;
   pageSize?: number;
   search?: string;
+  include?: string;
+  isDeleted?: boolean;
 }
 
 export interface EntryType {
