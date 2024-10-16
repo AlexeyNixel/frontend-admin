@@ -5,5 +5,14 @@ export const useDocumentStore = defineStore('document', () => {
     return await DocumentApi.findDocuments(params);
   };
 
-  return { getDocuments };
+  const getDocument = async (slug: string, params?: DocumentParamsType) => {
+    const { data } = await DocumentApi.findDocument(slug, params);
+    return data;
+  };
+
+  const updateDocument = async (id: string, data: any) => {
+    return await DocumentApi.putDocument(id, data);
+  };
+
+  return { getDocuments, getDocument, updateDocument };
 });

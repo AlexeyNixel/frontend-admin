@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import RichEditor from '@/widgets/rich-editor/ui/rich-editor.vue';
 import { UploadImage } from '@/widgets/upload-image';
-import { type EntryType, useEntryStore } from '@/entities/entry';
+import { useEntryStore } from '@/entities/entry';
 import DateTimePicker from '@/entities/date-time-picker/ui/date-time-picker.vue';
 import dayjs from 'dayjs';
 import { useDepartmentStore } from '@/entities/department';

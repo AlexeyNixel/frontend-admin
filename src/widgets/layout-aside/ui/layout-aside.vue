@@ -42,7 +42,7 @@ const recordsGroupChild = [
   {
     icon: 'heroicons:photo',
     text: 'Слайды',
-    event: () => undefined,
+    event: () => navigateTo('/slide'),
   },
   {
     icon: 'heroicons:bars-arrow-down',

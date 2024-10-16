@@ -11,6 +11,8 @@ const props = defineProps<{
   storagePlace?: string;
   isCollection?: boolean;
   deleteEvent?: Function;
+  altLink?: string;
+  externalLink?: string;
 }>();
 
 const isDeleted = defineModel<boolean>('isDeleted');
@@ -25,7 +27,7 @@ const hideElement = async () => {
 <template>
   <div class="list-item">
     <nuxt-link
-      :to="`/${model}/update/${slug}`"
+      :to="`/${model}/update/${altLink || slug}`"
       class="list-item__field list-item__field--long"
       >{{ title }}</nuxt-link
     >
@@ -51,8 +53,17 @@ const hideElement = async () => {
     </div>
     <nuxt-link
       class="list-item__field"
-      v-if="slug"
+      v-if="!externalLink"
       :to="`http://dev.infomania.ru/${model}/${slug}`"
+      external
+      target="_blank"
+    >
+      <icon class="icon" name="i-heroicons-link" />
+    </nuxt-link>
+    <nuxt-link
+      class="list-item__field"
+      v-else
+      :to="`http://dev.infomania.ru/${externalLink}`"
       external
       target="_blank"
     >
