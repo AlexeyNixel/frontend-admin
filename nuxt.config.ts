@@ -5,7 +5,14 @@ export default defineNuxtConfig({
   alias: { '@': '../src' },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@pinia/nuxt', 'dayjs-nuxt'],
+  modules: [
+    '@nuxt/ui',
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    'dayjs-nuxt',
+    '@samk-dev/nuxt-vcalendar',
+    'nuxt-swiper',
+  ],
   vite: {
     vue: {
       script: {
@@ -31,11 +38,18 @@ export default defineNuxtConfig({
     middleware: './src/app/middleware',
     plugins: './src/app/plugins',
   },
-  css: ['~/src/app/main.css', '~/src/app/styles/datepicker.css'],
+  css: [
+    '~/src/app/main.css',
+    '~/src/app/styles/datepicker.css',
+    '@vuepic/vue-datepicker/dist/main.css',
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+  build: {
+    transpile: ['@vuepic/vue-datepicker'],
   },
 });

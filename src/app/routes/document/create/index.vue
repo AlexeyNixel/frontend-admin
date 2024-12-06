@@ -1,7 +1,9 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { DocumentAdmin } from '@/widgets/document-admin';
+</script>
 
 <template>
-  <div>asd</div>
+  <div><document-admin /></div>
 </template>
 
 <style scoped lang="scss"></style>

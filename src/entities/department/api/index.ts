@@ -17,7 +17,7 @@ export const findDepartment = async (
 };
 
 export const putDepartment = async (slug: string, data: object) => {
-  return await mainApi.patch(`${DEPARTMENT_ROUTE}${slug}`, data);
+  return await mainApi.put(`${DEPARTMENT_ROUTE}${slug}`, data);
 };
 
 export const postDepartment = async (data: any) => {

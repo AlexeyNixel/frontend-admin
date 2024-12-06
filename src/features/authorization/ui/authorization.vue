@@ -7,8 +7,9 @@ const user = ref<UserType>({
 });
 
 const authStore = useAuthorizationStore();
-
 const toast = useToast();
+
+const showPassword = ref(false);
 const isShowMessageNoLogin = ref(false);
 
 const login = async () => {
@@ -38,9 +39,20 @@ const login = async () => {
       class="login-form__field"
       placeholder="Пароль"
       v-model="user.password"
-      type="password"
+      :type="showPassword ? 'text' : 'password'"
       color="red"
-    />
+      :ui="{ icon: { trailing: { pointer: '' } } }"
+    >
+      <template #trailing>
+        <UButton
+          variant="link"
+          class="text-gray-500 dark:text-gray-400 text-xl"
+          @click="showPassword = !showPassword"
+        >
+          <Icon name="i-mdi-eye" />
+        </UButton>
+      </template>
+    </UInput>
     <UButton class="login-form__button" color="red" @click="login">
       Войти
     </UButton>

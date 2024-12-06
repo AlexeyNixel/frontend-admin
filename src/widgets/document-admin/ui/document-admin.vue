@@ -54,6 +54,14 @@ const updateDocument = async () => {
   });
 };
 
+const createDocument = async () => {
+  console.log(newDocument);
+  await documentStore.createDocument(newDocument);
+  toast.add({
+    title: 'Запись создана',
+  });
+};
+
 useHead({
   title: document.value?.title,
 });
@@ -77,7 +85,18 @@ useHead({
         color="red"
         placeholder="Меню"
       />
-      <UButton @click="updateDocument" label="Обновить" class="aside__item" />
+      <UButton
+        v-if="slug"
+        @click="updateDocument"
+        label="Обновить"
+        class="aside__item"
+      />
+      <UButton
+        v-else
+        @click="createDocument"
+        label="Создать"
+        class="aside__item"
+      />
     </div>
     <div class="body"><rich-editor v-model="newDocument.content" /></div>
   </div>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { type DepartmentType, useDepartmentStore } from '@/entities/department';
+import { useDepartmentStore } from '@/entities/department';
 import { UploadImage } from '@/widgets/upload-image';
 
 const route = useRoute();
 const departmentStore = useDepartmentStore();
-
+const toast = useToast();
 const { slug } = route.params;
 
 const department = ref<any>();
@@ -35,7 +35,14 @@ const fetchDepartment = async () => {
   });
   preview.value = data.preview.path;
   department.value = data;
-  console.log(department.value);
+};
+
+const updateDepartment = async () => {
+  console.log(newDepartment);
+  await departmentStore.updateDepartment(slug as string, newDepartment);
+  toast.add({
+    title: 'Запись обнавлена',
+  });
 };
 </script>
 
@@ -54,7 +61,13 @@ const fetchDepartment = async () => {
         placeholder="Слаг"
       />
       <UCheckbox label="скрыт" v-model="newDepartment.isDeleted" />
-      <UButton class="department__field" label="Создать" />
+      <UButton
+        @click="updateDepartment"
+        v-if="slug"
+        class="department__field"
+        label="Обновить"
+      />
+      <UButton v-else class="department__field" label="Создать" />
     </div>
   </div>
 </template>

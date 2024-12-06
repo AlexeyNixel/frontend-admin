@@ -14,5 +14,9 @@ export const useDocumentStore = defineStore('document', () => {
     return await DocumentApi.putDocument(id, data);
   };
 
-  return { getDocuments, getDocument, updateDocument };
+  const createDocument = async (data: any) => {
+    return await DocumentApi.postDocument(data);
+  };
+
+  return { getDocuments, getDocument, updateDocument, createDocument };
 });

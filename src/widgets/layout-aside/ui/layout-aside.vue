@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useDark, useToggle } from '@vueuse/core';
 import { AsideGroup } from '@/entities/aside-group';
-import { useRouter } from 'vue-router';
 import { useAuthorizationStore } from '@/features/authorization';
 
 const isDark = useDark();
@@ -47,7 +46,7 @@ const recordsGroupChild = [
   {
     icon: 'heroicons:bars-arrow-down',
     text: 'Меню',
-    event: () => undefined,
+    event: () => navigateTo('/menu'),
   },
   {
     icon: 'heroicons:book-open',
@@ -62,7 +61,7 @@ const recordsGroupChild = [
   {
     icon: 'heroicons:calendar-date-range',
     text: 'Афиша',
-    event: () => undefined,
+    event: () => navigateTo('/billboard'),
   },
   {
     icon: 'heroicons:film',
@@ -72,7 +71,7 @@ const recordsGroupChild = [
   {
     icon: 'heroicons:presentation-chart-bar',
     text: 'Выставки',
-    event: () => undefined,
+    event: () => navigateTo('/exhibition'),
   },
 ];
 

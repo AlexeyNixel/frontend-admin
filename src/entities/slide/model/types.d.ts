@@ -5,6 +5,7 @@ export interface SlideParamsType {
   page?: number;
   isDeleted?: boolean;
   include?: string;
+  orderBy?: string;
 }
 
 export interface SlideType {

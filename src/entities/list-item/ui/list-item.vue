@@ -10,7 +10,9 @@ const props = defineProps<{
   menuItemType?: string;
   storagePlace?: string;
   isCollection?: boolean;
+  menu?: string;
   deleteEvent?: Function;
+  noShowLinkToContent?: boolean;
   altLink?: string;
   externalLink?: string;
 }>();
@@ -21,6 +23,13 @@ const hideElement = async () => {
   if (isDeleted.value !== undefined) {
     return deleteModel(`/api/${props.model}/${props.slug}`, isDeleted.value);
   }
+};
+
+const translateMenuName = {
+  COLLEAGUES: 'Коллегам',
+  ABOUT: 'О библиотеке',
+  DOCUMENTS: 'Документы',
+  COMMON: 'Читателям',
 };
 </script>
 
@@ -37,6 +46,9 @@ const hideElement = async () => {
     <div class="list-item__field" v-if="menuItemType">
       {{ menuItemType }}
     </div>
+    <div class="list-item__field" v-if="menu">
+      {{ translateMenuName[menu].toUpperCase() }}
+    </div>
     <div class="list-item__field" v-if="storagePlace">
       {{ storagePlace }}
     </div>
@@ -51,24 +63,24 @@ const hideElement = async () => {
         v-model="isDeleted"
       />
     </div>
-    <nuxt-link
-      class="list-item__field"
-      v-if="!externalLink"
-      :to="`http://dev.infomania.ru/${model}/${slug}`"
-      external
-      target="_blank"
-    >
-      <icon class="icon" name="i-heroicons-link" />
-    </nuxt-link>
-    <nuxt-link
-      class="list-item__field"
-      v-else
-      :to="`http://dev.infomania.ru/${externalLink}`"
-      external
-      target="_blank"
-    >
-      <icon class="icon" name="i-heroicons-link" />
-    </nuxt-link>
+    <div class="list-item__field" v-if="!noShowLinkToContent">
+      <nuxt-link
+        v-if="!externalLink"
+        :to="`http://dev.infomania.ru/${model}/${slug}`"
+        external
+        target="_blank"
+      >
+        <icon class="icon" name="i-heroicons-link" />
+      </nuxt-link>
+      <nuxt-link
+        v-else
+        :to="`http://dev.infomania.ru/${externalLink}`"
+        external
+        target="_blank"
+      >
+        <icon class="icon" name="i-heroicons-link" />
+      </nuxt-link>
+    </div>
   </div>
 </template>
 

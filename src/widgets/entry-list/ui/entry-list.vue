@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type EntryResponseType, useEntryStore } from '@/entities/entry';
+import { type EntryResponseType } from '@/entities/entry';
 import { ListItem } from '@/entities/list-item';
 
 const page = ref(1);

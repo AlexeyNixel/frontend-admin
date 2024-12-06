@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { SlideAdmin } from '@/widgets/slide-admin';
+import { MenuAdmin } from '@/widgets/menu-admin';
 </script>
 
 <template>
-  <slide-admin />
+  <div><menu-admin /></div>
 </template>
 
 <style scoped lang="scss"></style>
