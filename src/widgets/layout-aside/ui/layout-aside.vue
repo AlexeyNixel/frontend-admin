@@ -51,7 +51,7 @@ const recordsGroupChild = [
   {
     icon: 'heroicons:book-open',
     text: 'Книги',
-    event: () => undefined,
+    event: () => navigateTo('/book'),
   },
   {
     icon: 'heroicons:view-columns',

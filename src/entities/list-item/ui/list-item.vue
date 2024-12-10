@@ -52,6 +52,12 @@ const translateMenuName = {
     <div class="list-item__field" v-if="storagePlace">
       {{ storagePlace }}
     </div>
+    <div
+      class="list-item__field"
+      v-else-if="storagePlace === '' || storagePlace === null"
+    >
+      Место хранения не указано
+    </div>
     <div class="list-item__field" v-if="isCollection">
       {{ isCollection }}
     </div>
