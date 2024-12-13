@@ -53,6 +53,7 @@ onMounted(() => {
 const fetchDepartment = async () => {
   const { data } = await departmentStore.getDepartments({
     isDeleted: true,
+    pageSize: 20,
   });
   departments.value = data;
 };
@@ -178,7 +179,7 @@ const createEntry = async () => {
 
 <style scoped lang="scss">
 .entry-update {
-  @apply bg-white dark:bg-neutral-900 p-2 rounded-xl h-full;
+  @apply dark:bg-neutral-900 p-2 rounded-xl h-full;
   .header {
     @apply flex;
 

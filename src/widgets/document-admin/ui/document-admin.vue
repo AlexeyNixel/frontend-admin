@@ -30,7 +30,6 @@ onBeforeMount(async () => {
 
 const fetchDocument = async () => {
   document.value = await documentStore.getDocument(slug as string);
-  console.log(document.value);
 };
 
 const fetchMenuItems = async () => {
@@ -38,7 +37,6 @@ const fetchMenuItems = async () => {
     pageSize: 100,
   });
   menuItems.value = data;
-  console.log(menuItems.value);
 };
 
 const assigmentObject = () => {
@@ -55,7 +53,6 @@ const updateDocument = async () => {
 };
 
 const createDocument = async () => {
-  console.log(newDocument);
   await documentStore.createDocument(newDocument);
   toast.add({
     title: 'Запись создана',

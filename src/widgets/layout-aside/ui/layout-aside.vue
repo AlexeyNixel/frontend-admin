@@ -54,11 +54,6 @@ const recordsGroupChild = [
     event: () => navigateTo('/book'),
   },
   {
-    icon: 'heroicons:view-columns',
-    text: 'Подборки книг',
-    event: () => undefined,
-  },
-  {
     icon: 'heroicons:calendar-date-range',
     text: 'Афиша',
     event: () => navigateTo('/billboard'),
@@ -70,14 +65,20 @@ const recordsGroupChild = [
   },
   {
     icon: 'heroicons:presentation-chart-bar',
-    text: 'Выставки',
-    event: () => navigateTo('/exhibition'),
+    text: 'Загрузить выставку',
+    event: () => uploadExhibition(),
   },
 ];
 
 onMounted(() => {
   // user.value = localStorage.getItem('username') || undefined;
 });
+
+const uploadExhibition = async () => {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.click();
+};
 </script>
 
 <template>

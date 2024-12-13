@@ -40,7 +40,6 @@ onBeforeMount(async () => {
 
 const fetchBook = async () => {
   book.value = await bookStore.getBook(slug as string);
-  console.log(book.value);
 };
 
 const assigmentObject = () => {

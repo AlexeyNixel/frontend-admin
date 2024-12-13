@@ -38,7 +38,6 @@ onMounted(async () => {
   const { data } = await menuStore.getMenu(route.params.slug as string, {
     include: 'menuItems',
   });
-  console.log(data);
 
   data.menuItems?.forEach((item: any) => {
     menuItems.value.push(item);
@@ -47,7 +46,6 @@ onMounted(async () => {
   Object.keys(menu).forEach((key) => {
     menu[key] = data[key];
   });
-  console.log(menuItems.value);
 });
 </script>
 

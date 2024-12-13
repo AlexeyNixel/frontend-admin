@@ -38,7 +38,6 @@ const fetchDepartment = async () => {
 };
 
 const updateDepartment = async () => {
-  console.log(newDepartment);
   await departmentStore.updateDepartment(slug as string, newDepartment);
   toast.add({
     title: 'Запись обнавлена',

@@ -20,7 +20,6 @@ const openFileDialog = () => {
     const { data } = await uploadImage(file);
     uploadedImage.value = data.path;
     model.value = data.id;
-    console.log(data);
   };
 
   input.click();

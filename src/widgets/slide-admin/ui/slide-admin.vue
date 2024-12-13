@@ -49,7 +49,6 @@ const getSlide = async () => {
   slide.value = await slideStore.getSlide(slug as string, {
     include: 'image',
   });
-  console.log(slide.value);
 };
 
 const getEntries = async () => {

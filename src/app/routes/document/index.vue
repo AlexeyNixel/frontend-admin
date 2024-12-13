@@ -24,7 +24,6 @@ const fetchDocuments = async () => {
     page: page.value,
     isDeleted: true,
   });
-  console.log(documents.value);
 };
 
 const handleNavigate = () => {
