@@ -101,6 +101,6 @@ const fetchEventByDay = async (val?: any) => {
 }
 
 :deep(.vc-expanded) {
-  @apply min-w-full sm:min-w-[360px];
+  @apply min-w-[360px];
 }
 </style>

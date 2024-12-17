@@ -72,6 +72,8 @@ const updateEntry = async () => {
 const createEntry = async () => {
   return await entryStore.createEntry(newEntry);
 };
+
+useHead({ title: 'Обновить новость' });
 </script>
 
 <template>
@@ -116,20 +118,22 @@ const createEntry = async () => {
           value-attribute="id"
           placeholder="Выбрать рубрику"
         />
-        <UCheckbox
-          v-model="newEntry.isDeleted"
-          color="red"
-          class="aside__item"
-          label="Скрыта"
-          border
-        />
-        <UCheckbox
-          v-model="newEntry.pinned"
-          color="red"
-          class="aside__item"
-          label="Закреплена"
-          border
-        />
+        <div class="aside__item_group">
+          <UCheckbox
+            v-model="newEntry.isDeleted"
+            color="red"
+            class="w-full"
+            label="Скрыта"
+            border
+          />
+          <UCheckbox
+            v-model="newEntry.pinned"
+            color="red"
+            class="w-full"
+            label="Закреплена"
+            border
+          />
+        </div>
         <UButton
           v-if="slug"
           color="red"
@@ -188,6 +192,11 @@ const createEntry = async () => {
 
       &__item {
         @apply w-full m-0 mb-2;
+
+        &_group {
+          @apply flex border border-red-500 dark:border-red-400 p-1 bg-red-500 dark:bg-red-400 my-2 rounded-md;
+        }
+
         &_img {
           @apply h-[230px] mb-2;
         }

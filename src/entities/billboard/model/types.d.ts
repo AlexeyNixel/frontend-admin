@@ -61,7 +61,13 @@ export interface BillboardType {
   isDeleted: boolean;
 }
 
+export interface BillboardResponseType {
+  data: BillboardType[];
+  meta: { page: number; pageSize: number; total: number };
+}
+
 export interface BillboardParams {
+  page?: number;
   orderBy?: string;
   fromDate?: string;
   toDate?: string;

@@ -102,10 +102,6 @@ const translateMenuName = {
       @apply w-full text-left justify-start;
     }
 
-    &--font {
-      font-family: Roboto;
-    }
-
     .icon {
       @apply text-xl;
     }

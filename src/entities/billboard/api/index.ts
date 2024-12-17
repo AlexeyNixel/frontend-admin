@@ -8,10 +8,7 @@ export const findBillboards = async (params?: BillboardParams) => {
   return (await mainApi.get('/api/affiche/', { params })).data;
 };
 
-export const findBillboard = async (
-  slug: string,
-  params?: BillboardParams
-): Promise<BillboardType> => {
+export const findBillboard = async (slug: string, params?: BillboardParams) => {
   return await mainApi.get(`/api/affiche/${slug}`, { params });
 };
 

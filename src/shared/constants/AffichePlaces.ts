@@ -20,29 +20,81 @@ enum AffichePlacesEnum {
   SPACE_TYPE_VIRT = 'virt',
 }
 
-export const AffichePlaces: { [key in AffichePlacesEnum]: string } = {
-  [AffichePlacesEnum.SPACE_TYPE_ALL]: 'Все помещения библиотеки',
-  [AffichePlacesEnum.SPACE_TYPE_OUT]: 'Выездное',
-  [AffichePlacesEnum.SPACE_TYPE_GUEST]: 'Гостиная',
-  [AffichePlacesEnum.SPACE_TYPE_GUEST_2]: 'Гостиная (Цоколь)',
-  [AffichePlacesEnum.SPACE_TYPE_ITCLASS]: 'IT-класс (весь)',
-  [AffichePlacesEnum.SPACE_TYPE_ITCLASS_1]:
-    'Компьютерный класс (секция с компьютерами)',
-  [AffichePlacesEnum.SPACE_TYPE_ITCLASS_2]: 'Компьютерный класс (студия)',
-  [AffichePlacesEnum.SPACE_TYPE_CONF]: 'Конференц-зал',
-  [AffichePlacesEnum.SPACE_TYPE_MEDIA]: 'Медиатека',
-  [AffichePlacesEnum.SPACE_TYPE_MAB]: 'Молодёжно-аналитическое бюро',
-  [AffichePlacesEnum.SPACE_TYPE_OKIR]: 'Отдел координации и развития',
-  [AffichePlacesEnum.SPACE_TYPE_OMP]: 'Отдел литературных программ',
-  [AffichePlacesEnum.SPACE_TYPE_OOL]: 'Отдел отраслевой литературы (зал)',
-  [AffichePlacesEnum.SPACE_TYPE_KOHL_DS]:
-    'Отдел художественной литературы (детский сектор)',
-  [AffichePlacesEnum.SPACE_TYPE_KOHL_C]:
-    'Отдел художественной литературы (цокольный этаж)',
-  [AffichePlacesEnum.SPACE_TYPE_CROSS]:
-    'Пересечение Красного проспекта и Октябрьской',
-  [AffichePlacesEnum.SPACE_TYPE_OOL_COM]: 'Центр графической культуры',
-  [AffichePlacesEnum.SPACE_TYPE_CPKIM]:
-    'Центр поддержки культурных инициатив молодёжи',
-  [AffichePlacesEnum.SPACE_TYPE_VIRT]: 'Электронные ресурсы библиотеки',
-};
+export const AffichePlaces = [
+  {
+    key: 'all',
+    value: 'Все помещения библиотеки',
+  },
+  {
+    key: 'out',
+    value: 'Выездное',
+  },
+  {
+    key: 'guest',
+    value: 'Гостиная',
+  },
+  {
+    key: 'guest_2',
+    value: 'Гостиная (Цоколь)',
+  },
+  {
+    key: 'itclass',
+    value: 'IT-класс (весь)',
+  },
+  {
+    key: 'itclass_1',
+    value: 'Компьютерный класс (секция с компьютерами)',
+  },
+  {
+    key: 'itclass_2',
+    value: 'Компьютерный класс (студия)',
+  },
+  {
+    key: 'conf',
+    value: 'Конференц-зал',
+  },
+  {
+    key: 'media',
+    value: 'Медиатека',
+  },
+  {
+    key: 'mab',
+    value: 'Молодёжно-аналитическое бюро',
+  },
+  {
+    key: 'okir',
+    value: 'Отдел координации и развития',
+  },
+  {
+    key: 'omp',
+    value: 'Отдел литературных программ',
+  },
+  {
+    key: 'ool',
+    value: 'Отдел отраслевой литературы (зал)',
+  },
+  {
+    key: 'kohl_ds',
+    value: 'Отдел художественной литературы (детский сектор)',
+  },
+  {
+    key: 'kohl_c',
+    value: 'Отдел художественной литературы (цокольный этаж)',
+  },
+  {
+    key: 'cross',
+    value: 'Пересечение Красного проспекта и Октябрьской',
+  },
+  {
+    key: 'ool_com',
+    value: 'Центр графической культуры',
+  },
+  {
+    key: 'cpkim',
+    value: 'Центр поддержки культурных инициатив молодёжи',
+  },
+  {
+    key: 'virt',
+    value: 'Электронные ресурсы библиотеки',
+  },
+];

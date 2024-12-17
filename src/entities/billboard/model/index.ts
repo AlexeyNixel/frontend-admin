@@ -6,7 +6,8 @@ import {
 
 export const useBillboardStore = defineStore('billboard', () => {
   const getBillboard = async (slug: string, params?: BillboardParams) => {
-    return await BillboardApi.findBillboard(slug, params);
+    const { data } = await BillboardApi.findBillboard(slug, params);
+    return data;
   };
 
   const billboards = ref<BillboardType[]>();
@@ -15,10 +16,7 @@ export const useBillboardStore = defineStore('billboard', () => {
   const activeComp = ref<'event' | 'calendar'>('calendar');
 
   const getBillboards = async (params?: BillboardParams) => {
-    const { data } = await BillboardApi.findBillboards(params);
-    billboards.value = data;
-    selectedEvents.value = billboards.value;
-    return billboards.value;
+    return await BillboardApi.findBillboards(params);
   };
 
   const getBillboardByDay = async (day: string, params?: BillboardParams) => {
