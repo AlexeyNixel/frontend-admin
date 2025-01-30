@@ -72,8 +72,6 @@ const updateEntry = async () => {
 const createEntry = async () => {
   return await entryStore.createEntry(newEntry);
 };
-
-useHead({ title: 'Обновить новость' });
 </script>
 
 <template>

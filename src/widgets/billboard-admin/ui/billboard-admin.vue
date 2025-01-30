@@ -164,7 +164,6 @@ useHead({
       &_border {
         @apply border border-red-500 dark:border-red-400 p-1 rounded-md;
       }
-
       &_row {
         @apply w-1/2;
       }
@@ -177,7 +176,7 @@ useHead({
 }
 
 :deep(.dp__pointer) {
-  font-family: Montserrat;
+  font-family: Montserrat, serif;
   @apply bg-red-500 dark:bg-red-400 border-0 text-neutral-100 dark:text-neutral-900 text-[14px] py-1 rounded-md;
 }
 

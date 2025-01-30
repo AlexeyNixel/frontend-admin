@@ -17,6 +17,8 @@ const fetchEntry = async () => {
     include: 'preview,rubrics',
   });
 };
+
+useHead({title: 'Обновить новость'})
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 import { mainApi } from '@/shared/api';
 import { Routes } from '@/shared/api/routes';
-import { type BillboardParams, type BillboardType } from '@/entities/billboard';
+import { type BillboardParams } from '@/entities/billboard';
 
 const { AFFICHE_ROUTE } = Routes;
 

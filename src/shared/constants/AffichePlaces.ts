@@ -1,25 +1,3 @@
-enum AffichePlacesEnum {
-  SPACE_TYPE_ALL = 'all',
-  SPACE_TYPE_OUT = 'out',
-  SPACE_TYPE_GUEST = 'guest',
-  SPACE_TYPE_GUEST_2 = 'guest_2',
-  SPACE_TYPE_ITCLASS = 'itclass',
-  SPACE_TYPE_ITCLASS_1 = 'itclass_1',
-  SPACE_TYPE_ITCLASS_2 = 'itclass_2',
-  SPACE_TYPE_CONF = 'conf',
-  SPACE_TYPE_MEDIA = 'media',
-  SPACE_TYPE_MAB = 'mab',
-  SPACE_TYPE_OKIR = 'okir',
-  SPACE_TYPE_OMP = 'omp',
-  SPACE_TYPE_OOL = 'ool',
-  SPACE_TYPE_KOHL_DS = 'kohl_ds',
-  SPACE_TYPE_KOHL_C = 'kohl_c',
-  SPACE_TYPE_CROSS = 'cross',
-  SPACE_TYPE_OOL_COM = 'ool_com',
-  SPACE_TYPE_CPKIM = 'cpkim',
-  SPACE_TYPE_VIRT = 'virt',
-}
-
 export const AffichePlaces = [
   {
     key: 'all',

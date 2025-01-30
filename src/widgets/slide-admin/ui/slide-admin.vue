@@ -69,8 +69,10 @@ const getEntries = async () => {
         class="aside__item"
         placeholder="Название"
         v-model="newSlide.title"
+        color="red"
       />
-      <UInput class="aside__item" placeholder="Ссылка" v-model="newSlide.url" />
+      <UInput class="aside__item" placeholder="Ссылка" v-model="newSlide.url"
+      color="red"/>
       <USelect
         class="aside__item"
         v-model="newSlide.entryId"
@@ -78,17 +80,20 @@ const getEntries = async () => {
         option-attribute="title"
         valueAttribute="id"
         placeholder="Выбрать новость"
+        color="red"
       />
       <UCheckbox
         class="aside__item"
         label="Удален"
         v-model="newSlide.isDeleted"
+        color="red"
       />
       <UButton
         class="aside__item"
         label="Обновить"
         v-if="slug"
         @click="updateSlide"
+        color="red"
       />
       <UButton
         class="aside__item"

@@ -27,6 +27,8 @@ const handleNavigate = () => {
   navigateTo({ path: '/entry', query: { page: page.value } });
   fetchEntry();
 };
+
+useHead({title: 'Список новостей'})
 </script>
 
 <template>

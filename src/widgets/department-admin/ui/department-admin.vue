@@ -9,7 +9,7 @@ const { slug } = route.params;
 
 const department = ref<any>();
 
-const newDepartment = reactive({
+const newDepartment = reactive<any>({
   title: '',
   slug: '',
   fileId: '',
@@ -53,13 +53,15 @@ const updateDepartment = async () => {
         v-model="newDepartment.title"
         class="department__field"
         placeholder="Название"
+        color="red"
       />
       <UInput
         v-model="newDepartment.slug"
         class="department__field"
         placeholder="Слаг"
+        color="red"
       />
-      <UCheckbox label="скрыт" v-model="newDepartment.isDeleted" />
+      <UCheckbox class="department__field department__field_border" label="скрыт" v-model="newDepartment.isDeleted" />
       <UButton
         @click="updateDepartment"
         v-if="slug"
@@ -73,17 +75,21 @@ const updateDepartment = async () => {
 
 <style scoped lang="scss">
 .department {
-  @apply flex w-1/2;
+  @apply flex flex-row-reverse w-1/2;
 
   &__preview {
-    @apply w-1/2;
+    @apply w-1/2 ml-2;
   }
 
   &__body {
     @apply ml-2 w-1/2;
   }
   &__field {
-    @apply mb-3;
+    @apply mb-3 w-full;
+
+    &_border {
+      @apply border border-red-400 p-[5px] rounded-md ;
+    }
   }
 }
 </style>
