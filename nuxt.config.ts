@@ -3,6 +3,9 @@
 export default defineNuxtConfig({
   ssr: false,
   alias: { '@': '../src' },
+  devServer: {
+    port: 3010,
+  },
   modules: [
     '@nuxt/ui',
     '@vueuse/nuxt',
