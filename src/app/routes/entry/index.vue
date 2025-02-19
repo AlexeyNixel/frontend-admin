@@ -9,8 +9,8 @@ const { entries } = storeToRefs(entryStore);
 const page = ref(Number(route.query.page) || 1);
 
 const searchText = ref('');
-onMounted(() => {
-  fetchEntry();
+onMounted(async () => {
+  await fetchEntry();
 });
 
 const fetchEntry = async () => {

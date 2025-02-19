@@ -1,19 +1,70 @@
-<script lang="ts" setup>
-import { TransitionPresets, useTransition } from '@vueuse/core';
+<script setup lang="ts">
+import { useEntryStore } from '@/entities/entry';
+import { EntryList } from '@/widgets/entry-list';
+import { ListHeader } from '@/entities/list-header';
 
-const source = ref(0);
+const route = useRoute();
+const entryStore = useEntryStore();
+const { entries } = storeToRefs(entryStore);
+const page = ref(Number(route.query.page) || 1);
 
-const output = useTransition(source, {
-  duration: 1000,
-  transition: TransitionPresets.easeInOutCubic,
+const searchText = ref('');
+onMounted(async () => {
+  await fetchEntry();
 });
+
+const fetchEntry = async () => {
+  await entryStore.getAllEntries({
+    orderBy: '-publishedAt',
+    pageSize: 30,
+    page: page.value,
+    search: searchText.value || undefined,
+    isDeleted: true,
+  });
+};
+
+const handleNavigate = () => {
+  navigateTo({ path: '/entry', query: { page: page.value } });
+  fetchEntry();
+};
+
+useHead({ title: 'Список новостей' });
 </script>
 
 <template>
-  <div>
-    <Icon name="i-heroicons-hand-raised"></Icon>
-    Hello world
-    <UButton @click="source = 1000">Транишн</UButton>
-    {{ output.toFixed(0) }}
+  <div class="entry-list">
+    <list-header
+      class="entry-list__header"
+      title="Новости"
+      create-link="/entry/create"
+      v-model="searchText"
+      @keydown.enter="fetchEntry"
+    />
+    <template v-if="entryStore.entries?.data.length > 0">
+      <entry-list :entries="entryStore.entries" />
+      <UPagination
+        class="entry-list__pagination"
+        :page-count="+entries.meta.pageSize"
+        :total="+entries.meta.total"
+        v-model="page"
+        @update:model-value="handleNavigate"
+      />
+    </template>
+    <div v-else class="not-found">Новости не найдены</div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.entry-list {
+  &__header {
+    @apply sticky top-0;
+  }
+
+  &__pagination {
+    @apply sticky bottom-2 flex justify-center z-20;
+  }
+}
+.not-found {
+  @apply flex items-center justify-center font-bold mt-12;
+}
+</style>

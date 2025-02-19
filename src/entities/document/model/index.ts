@@ -1,22 +1,38 @@
-import { DocumentApi, type DocumentParamsType } from '@/entities/document';
+import {
+  DocumentApi,
+  type DocumentType,
+  type DocumentParamsType,
+  type DocumentResponseType,
+} from '@/entities/document';
 
-export const useDocumentStore = defineStore('document', () => {
-  const getDocuments = async (params?: DocumentParamsType) => {
-    return await DocumentApi.findDocuments(params);
-  };
+interface State {
+  documents: DocumentResponseType | null;
+  document: DocumentType | null;
+}
 
-  const getDocument = async (slug: string, params?: DocumentParamsType) => {
-    const { data } = await DocumentApi.findDocument(slug, params);
-    return data;
-  };
+export const useDocumentStore = defineStore('document', {
+  state: (): State => {
+    return {
+      documents: null,
+      document: null,
+    };
+  },
 
-  const updateDocument = async (id: string, data: any) => {
-    return await DocumentApi.putDocument(id, data);
-  };
+  actions: {
+    async getDocuments(params?: DocumentParamsType) {
+      this.documents = await DocumentApi.findDocuments(params);
+    },
 
-  const createDocument = async (data: any) => {
-    return await DocumentApi.postDocument(data);
-  };
+    async getDocumentById(id: string, params?: DocumentParamsType) {
+      this.document = await DocumentApi.findDocument(id, params);
+    },
 
-  return { getDocuments, getDocument, updateDocument, createDocument };
+    async updateDocument(id: string, data: any) {
+      await DocumentApi.putDocument(id, data);
+    },
+
+    async createDocument(data: any) {
+      await DocumentApi.postDocument(data);
+    },
+  },
 });

@@ -1,25 +1,21 @@
 <script setup lang="ts">
 import { DocumentList } from '@/widgets/document-list';
 import { ListHeader } from '@/entities/list-header';
-import {
-  useDocumentStore,
-  type DocumentResponseType,
-} from '@/entities/document';
-
-const documentStore = useDocumentStore();
-const documents = ref<DocumentResponseType>();
-const page = ref(1);
+import { useDocumentStore } from '@/entities/document';
 
 useHead({
   title: 'Список документов',
 });
 
-onBeforeMount(() => {
-  fetchDocuments();
+const page = ref(1);
+const documentStore = useDocumentStore();
+
+onBeforeMount(async () => {
+  await fetchDocuments();
 });
 
 const fetchDocuments = async () => {
-  documents.value = await documentStore.getDocuments({
+  await documentStore.getDocuments({
     pageSize: 30,
     page: page.value,
     isDeleted: true,
@@ -33,13 +29,13 @@ const handleNavigate = () => {
 </script>
 
 <template>
-  <div v-if="documents">
+  <div v-if="documentStore.documents">
     <list-header title="Документы" create-link="/document/create" />
-    <document-list :documents="documents.data" />
+    <document-list :documents="documentStore.documents.data" />
     <UPagination
       class="pagination"
-      :page-count="+documents.meta.pageSize"
-      :total="+documents.meta.total"
+      :page-count="+documentStore.documents.meta.pageSize"
+      :total="+documentStore.documents.meta.total"
       v-model="page"
       @update:model-value="handleNavigate"
     />

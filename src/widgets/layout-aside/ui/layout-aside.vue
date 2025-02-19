@@ -59,11 +59,6 @@ const recordsGroupChild = [
     event: () => navigateTo('/billboard'),
   },
   {
-    icon: 'heroicons:film',
-    text: 'Видео',
-    event: () => undefined,
-  },
-  {
     icon: 'heroicons:presentation-chart-bar',
     text: 'Загрузить выставку',
     event: () => uploadExhibition(),
@@ -83,7 +78,9 @@ const uploadExhibition = async () => {
 
 <template>
   <aside class="aside">
-    <router-link to="/" class="logo"> INFOMANIA </router-link>
+    <nuxt-link class="logo" target="_blank" to="http://dev.infomania.ru/">
+      INFOMANIA
+    </nuxt-link>
     <aside-group title="Метрики" :buttons="metricGroupChild" />
     <aside-group title="Тема" :buttons="themeGroupChild" />
     <aside-group title="Записи" :buttons="recordsGroupChild" />

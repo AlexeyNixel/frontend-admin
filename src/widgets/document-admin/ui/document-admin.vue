@@ -3,6 +3,10 @@ import RichEditor from '@/widgets/rich-editor/ui/rich-editor.vue';
 import { type DocumentType, useDocumentStore } from '@/entities/document';
 import { useMenuItemStore } from '@/entities/menu-item';
 
+const props = defineProps<{
+  document?: any;
+}>();
+
 const route = useRoute();
 const toast = useToast();
 const documentStore = useDocumentStore();
@@ -21,16 +25,11 @@ const newDocument = reactive({
 });
 
 onBeforeMount(async () => {
-  if (slug) {
-    await fetchDocument();
+  if (props.document) {
     assigmentObject();
   }
   await fetchMenuItems();
 });
-
-const fetchDocument = async () => {
-  document.value = await documentStore.getDocument(slug as string);
-};
 
 const fetchMenuItems = async () => {
   const { data } = await menuItemStore.getMenuItems({
@@ -41,7 +40,7 @@ const fetchMenuItems = async () => {
 
 const assigmentObject = () => {
   Object.keys(newDocument).forEach((key) => {
-    newDocument[key] = document.value[key];
+    newDocument[key] = props.document[key];
   });
 };
 
@@ -58,10 +57,6 @@ const createDocument = async () => {
     title: 'Запись создана',
   });
 };
-
-useHead({
-  title: document.value?.title,
-});
 </script>
 
 <template>

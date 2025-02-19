@@ -10,7 +10,7 @@ export interface DocumentType {
 }
 
 export interface DocumentResponseType {
-  data: DocumentType;
+  data: DocumentType[];
   meta: {
     total: number;
     page: number;

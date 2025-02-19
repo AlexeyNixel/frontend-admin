@@ -3,8 +3,6 @@
 export default defineNuxtConfig({
   ssr: false,
   alias: { '@': '../src' },
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
   modules: [
     '@nuxt/ui',
     '@vueuse/nuxt',
@@ -37,6 +35,7 @@ export default defineNuxtConfig({
     layouts: './src/app/layouts',
     middleware: './src/app/middleware',
     plugins: './src/app/plugins',
+    public: './src/app/public',
   },
   css: [
     '~/src/app/main.css',
