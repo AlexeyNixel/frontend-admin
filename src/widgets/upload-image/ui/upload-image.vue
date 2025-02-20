@@ -8,7 +8,7 @@ const props = defineProps<{
 const uploadedImage = ref(props.image);
 
 const model = defineModel();
-
+const staticUrl = ref(import.meta.env['VITE_STATIC_URL']);
 const openFileDialog = () => {
   const input = document.createElement('input');
   input.type = 'file';
@@ -31,7 +31,7 @@ const openFileDialog = () => {
     <img
       class="image"
       v-if="uploadedImage || image"
-      :src="uploadedImage || image"
+      :src="staticUrl + uploadedImage || image"
       alt=""
     />
     <Icon v-else class="icon" name="i-heroicons-photo" />
