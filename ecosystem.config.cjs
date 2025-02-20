@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'Admin',
-      port: '3000',
+      port: '3005',
       script: './.output/server/index.mjs',
     },
   ],
