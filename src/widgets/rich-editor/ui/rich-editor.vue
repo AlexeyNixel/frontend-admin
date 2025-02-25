@@ -21,6 +21,7 @@
 <script setup>
 import { computed, ref, onMounted } from 'vue';
 import { Ckeditor } from '@ckeditor/ckeditor5-vue';
+import { uploadAdapter } from '@/widgets/rich-editor/lib/uploadAdapter';
 
 import {
   ClassicEditor,
@@ -114,6 +115,7 @@ const config = computed(() => {
       ],
       shouldNotGroupWhenFull: false,
     },
+    extraPlugins: [uploadAdapter],
     plugins: [
       Alignment,
       Autoformat,
@@ -224,6 +226,38 @@ const config = computed(() => {
       ],
     },
     image: {
+      resizeOptions: [
+        {
+          name: 'resizeImage:original',
+          value: null,
+          label: 'Original',
+        },
+        {
+          name: 'resizeImage:20',
+          value: '20',
+          label: '20%',
+        },
+        {
+          name: 'resizeImage:33',
+          value: '33',
+          label: '33%',
+        },
+        {
+          name: 'resizeImage:40',
+          value: '40',
+          label: '40%',
+        },
+        {
+          name: 'resizeImage:60',
+          value: '60',
+          label: '60%',
+        },
+        {
+          name: 'resizeImage:80',
+          value: '80',
+          label: '80%',
+        },
+      ],
       toolbar: [
         'toggleImageCaption',
         'imageTextAlternative',

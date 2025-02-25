@@ -96,7 +96,7 @@ const translateMenuName = {
   @apply hover:bg-neutral-300 hover:dark:bg-slate-900 transition;
 
   &__field {
-    @apply w-1/6 z-10 flex items-center justify-center;
+    @apply w-1/6 z-10 flex items-center justify-center font-normal text-black dark:text-white;
 
     &--long {
       @apply w-full text-left justify-start;
