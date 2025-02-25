@@ -3,9 +3,7 @@
 export default defineNuxtConfig({
   ssr: false,
   alias: { '@': '../src' },
-  devServer: {
-    port: 3010,
-  },
+
   modules: [
     '@nuxt/ui',
     '@vueuse/nuxt',
@@ -14,6 +12,7 @@ export default defineNuxtConfig({
     '@samk-dev/nuxt-vcalendar',
     'nuxt-swiper',
   ],
+
   vite: {
     vue: {
       script: {
@@ -33,6 +32,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   dir: {
     pages: './src/app/routes',
     layouts: './src/app/layouts',
@@ -40,18 +40,23 @@ export default defineNuxtConfig({
     plugins: './src/app/plugins',
     public: './src/app/public',
   },
+
   css: [
     '~/src/app/main.css',
     '~/src/app/styles/datepicker.css',
     '@vuepic/vue-datepicker/dist/main.css',
   ],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   build: {
     transpile: ['@vuepic/vue-datepicker'],
   },
+
+  compatibilityDate: '2025-02-25',
 });

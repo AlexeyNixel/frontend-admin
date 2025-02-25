@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { useDepartmentStore } from '@/entities/department';
 import type { DepartmentType } from '@/entities/department/model/types';
 import { type RubricType, useRubricStore } from '@/entities/rubric';
+import UploadDocument from '@/widgets/upload-document/ui/upload-document.vue';
 
 const props = defineProps<{
   entry?: any;
@@ -132,6 +133,7 @@ const createEntry = async () => {
             border
           />
         </div>
+        <upload-document />
         <UButton
           v-if="slug"
           color="red"
