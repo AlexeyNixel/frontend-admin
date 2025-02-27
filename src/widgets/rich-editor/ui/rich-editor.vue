@@ -344,7 +344,32 @@ onMounted(() => {
 }
 
 .editor-container_classic-editor .editor-container__editor {
-  min-width: 795px;
-  max-width: 795px;
+  min-width: 500px;
+  max-width: 1000px;
+}
+:deep(.ck.ck-editor__main > .ck-editor__editable) {
+  @apply bg-white dark:bg-neutral-900;
+}
+
+:deep(.ck.ck-toolbar > .ck-toolbar__items) {
+  @apply bg-white dark:bg-neutral-900;
+}
+
+:deep(
+  .ck.ck-toolbar > .ck-toolbar__items > *:not(.ck-toolbar__line-break),
+  .ck.ck-toolbar > .ck.ck-toolbar__grouped-dropdown
+) {
+  @apply text-black dark:text-white;
+}
+
+:deep(
+  .ck.ck-button:not(.ck-button_with-text),
+  a.ck.ck-button:not(.ck-button_with-text)
+) {
+  @apply text-black dark:text-white;
+}
+
+:deep(.ck.ck-dropdown .ck-button.ck-dropdown__button) {
+  @apply text-black dark:text-white;
 }
 </style>

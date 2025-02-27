@@ -6,6 +6,7 @@ import { useBillboardStore } from '@/entities/billboard';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { AffichePlaces } from '@/shared/constants/AffichePlaces';
+import { v4 } from 'uuid';
 
 const route = useRoute();
 const billboardStore = useBillboardStore();
@@ -19,7 +20,7 @@ const billboard = ref<any>();
 const newBillboard = reactive<any>({
   title: '',
   phone: '',
-  slug: ' ',
+  slug: v4(),
   desc: '',
   eventDate: new Date(),
   eventTime: '',
@@ -88,12 +89,12 @@ useHead({
         color="red"
         placeholder="Номер"
       />
-      <UInput
-        v-model="newBillboard.slug"
-        class="aside__item"
-        color="red"
-        placeholder="Слаг"
-      />
+      <!--      <UInput-->
+      <!--        v-model="newBillboard.slug"-->
+      <!--        class="aside__item"-->
+      <!--        color="red"-->
+      <!--        placeholder="Слаг"-->
+      <!--      />-->
       <USelect
         v-model="newBillboard.eventPlace"
         class="aside__item"

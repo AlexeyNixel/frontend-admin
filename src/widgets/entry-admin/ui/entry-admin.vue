@@ -17,6 +17,7 @@ const route = useRoute();
 const entryStore = useEntryStore();
 const departmentStore = useDepartmentStore();
 const rubricStore = useRubricStore();
+const toast = useToast();
 
 const rubrics = ref<RubricType[]>();
 const departments = ref<DepartmentType[]>();
@@ -68,10 +69,14 @@ const fetchRubric = async () => {
 
 const updateEntry = async () => {
   await entryStore.updateEntry(slug as string, newEntry);
+  toast.add({ title: 'Новость обновлена' });
+  navigateTo({ path: '/entry' });
 };
 
 const createEntry = async () => {
-  return await entryStore.createEntry(newEntry);
+  await entryStore.createEntry(newEntry);
+  toast.add({ title: 'Новость создана' });
+  navigateTo({ path: '/entry' });
 };
 </script>
 
