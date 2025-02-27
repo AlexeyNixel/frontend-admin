@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { UploadImage } from '@/widgets/upload-image';
 import { useBookStore } from '@/entities/book';
+import RichEditor from '@/widgets/rich-editor/ui/rich-editor.vue';
 
 const route = useRoute();
 const bookStore = useBookStore();
@@ -40,8 +41,12 @@ onBeforeMount(async () => {
 
 const fetchBook = async () => {
   book.value = await bookStore.getBook(slug as string);
+  console.log(book.value.preview.path);
+  preview.value = book.value.preview.path;
 };
-
+if (slug) {
+  await fetchBook();
+}
 const assigmentObject = () => {
   Object.keys(newBook).forEach((key) => {
     newBook[key] = book.value[key];
@@ -63,7 +68,11 @@ const createBook = async () => {
 
 <template>
   <div class="book-admin">
-    <UploadImage :image="preview" v-model="newBook.fileId" class="upload" />
+    <UploadImage
+      :image="book ? book.preview.path : ''"
+      v-model="newBook.fileId"
+      class="upload"
+    />
     <div class="body">
       <UInput class="field" placeholder="Название" v-model="newBook.title" />
       <UTextarea
@@ -71,11 +80,7 @@ const createBook = async () => {
         placeholder="Краткое описание"
         v-model="newBook.desc"
       />
-      <UTextarea
-        class="field"
-        placeholder="Полное описание"
-        v-model="newBook.content"
-      />
+      <rich-editor class="field" v-model="newBook.content" />
       <UInput
         class="field"
         placeholder="Ссылка на литрес"
@@ -99,19 +104,22 @@ const createBook = async () => {
 </template>
 
 <style scoped lang="scss">
-.upload {
-  @apply w-1/2;
-}
-
 .book-admin {
   @apply flex w-1/2;
 }
+.upload {
+  @apply w-1/2 max-h-[700px];
+}
 
 .body {
-  @apply w-full;
+  @apply w-[60%];
 
   .field {
     @apply w-full ml-2 mb-2;
   }
+}
+
+:deep(.ck-content) {
+  max-height: 300px;
 }
 </style>
