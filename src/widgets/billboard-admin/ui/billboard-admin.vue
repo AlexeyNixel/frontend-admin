@@ -6,7 +6,6 @@ import { useBillboardStore } from '@/entities/billboard';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { AffichePlaces } from '@/shared/constants/AffichePlaces';
-import { v4 } from 'uuid';
 
 const route = useRoute();
 const billboardStore = useBillboardStore();

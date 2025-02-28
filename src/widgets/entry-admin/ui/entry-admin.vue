@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import RichEditor from '@/widgets/rich-editor/ui/rich-editor.vue';
-import { UploadImage } from '@/widgets/upload-image';
-import { useEntryStore } from '@/entities/entry';
 import DateTimePicker from '@/entities/date-time-picker/ui/date-time-picker.vue';
+import UploadDocument from '@/widgets/upload-document/ui/upload-document.vue';
+import RichEditor from '@/widgets/rich-editor/ui/rich-editor.vue';
 import dayjs from 'dayjs';
-import { useDepartmentStore } from '@/entities/department';
 import type { DepartmentType } from '@/entities/department/model/types';
 import { type RubricType, useRubricStore } from '@/entities/rubric';
-import UploadDocument from '@/widgets/upload-document/ui/upload-document.vue';
+import { useDepartmentStore } from '@/entities/department';
+import { UploadImage } from '@/widgets/upload-image';
+import { useEntryStore } from '@/entities/entry';
 
 const props = defineProps<{
   entry?: any;
