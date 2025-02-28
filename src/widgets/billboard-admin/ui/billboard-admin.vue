@@ -20,7 +20,6 @@ const billboard = ref<any>();
 const newBillboard = reactive<any>({
   title: '',
   phone: '',
-  slug: v4(),
   desc: '',
   eventDate: new Date(),
   eventTime: '',
@@ -31,7 +30,8 @@ const newBillboard = reactive<any>({
 onBeforeMount(async () => {
   if (slug) {
     await fetchBillboard();
-    await assignObject();
+
+    assignObject();
   }
 });
 
@@ -45,6 +45,13 @@ const updateBillboard = async () => {
 };
 
 const createBillboard = async () => {
+  Object.keys(billboard).forEach((item) => {
+    if (!newBillboard[item]) {
+      delete newBillboard[item];
+    }
+  });
+
+  console.log(newBillboard);
   await billboardStore.createBillboard({
     ...newBillboard,
     eventTime: `1970-01-01T${newBillboard.eventTime}:00.000Z`,
