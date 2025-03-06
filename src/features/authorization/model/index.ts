@@ -1,5 +1,6 @@
 import type { UserType } from '@/features/authorization';
 import { authorization, hwoAmI } from '@/features/authorization/api';
+import { mainApi } from '@/shared/api';
 
 export const useAuthorizationStore = defineStore('auth', () => {
   const token = ref<string>();
@@ -14,6 +15,10 @@ export const useAuthorizationStore = defineStore('auth', () => {
       localStorage.setItem('token', token.value);
       localStorage.setItem('username', username.value);
       isAuth.value = true;
+
+      mainApi.defaults.headers.common['Authorization'] =
+        `Bearer ${token.value}`;
+
       return { result: data.access_token, error: null };
     } catch (e) {
       return { result: null, error: e };

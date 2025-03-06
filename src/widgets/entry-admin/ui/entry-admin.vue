@@ -74,9 +74,12 @@ const updateEntry = async () => {
 };
 
 const createEntry = async () => {
-  await entryStore.createEntry(newEntry);
   toast.add({ title: 'Новость создана' });
-  navigateTo({ path: '/entry' });
+  // const creatingEntry = await entryStore.createEntry(newEntry);
+
+  // navigateTo(`http://dev.infomania.ru/entry/${creatingEntry.data.slug}`, {
+  //   external: true,
+  // });
 };
 </script>
 
