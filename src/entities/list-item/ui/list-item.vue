@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import dayjs from 'dayjs';
 import { deleteModel } from '@/shared/api/delete-model';
+import { mainApi } from '@/shared/api';
 
 const props = defineProps<{
   model: string;
@@ -18,10 +19,15 @@ const props = defineProps<{
 }>();
 
 const isDeleted = defineModel<boolean>('isDeleted');
-
 const hideElement = async () => {
   if (isDeleted.value !== undefined) {
-    return deleteModel(`/api/${props.model}/${props.slug}`, isDeleted.value);
+    if (props.model === 'slide') {
+      return await mainApi.put(`/api/main-slider/${props.slug}`, {
+        isDeleted: isDeleted.value,
+      });
+    } else {
+      return deleteModel(`/api/${props.model}/${props.slug}`, isDeleted.value);
+    }
   }
 };
 
