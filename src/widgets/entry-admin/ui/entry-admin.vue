@@ -75,11 +75,11 @@ const updateEntry = async () => {
 
 const createEntry = async () => {
   toast.add({ title: 'Новость создана' });
-  // const creatingEntry = await entryStore.createEntry(newEntry);
+  const creatingEntry = await entryStore.createEntry(newEntry);
 
-  // navigateTo(`http://dev.infomania.ru/entry/${creatingEntry.data.slug}`, {
-  //   external: true,
-  // });
+  navigateTo(`http://dev.infomania.ru/entry/${creatingEntry.data.slug}`, {
+    external: true,
+  });
 };
 </script>
 
@@ -89,7 +89,7 @@ const createEntry = async () => {
       <div class="aside">
         <upload-image
           v-model="newEntry.fileId"
-          :image="entry ? entry?.preview.path : ''"
+          :image="entry ? entry?.preview?.path : ''"
         />
         <UPopover class="aside__item" :popper="{ placement: 'bottom-start' }">
           <UButton
