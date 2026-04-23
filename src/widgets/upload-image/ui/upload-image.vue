@@ -35,7 +35,7 @@ const openFileDialog = () => {
         :src="staticUrl + uploadedImage || image"
         alt=""
       />
-      <Icon v-else class="icon" name="i-heroicons-photo" />
+      <Icon v-else class="icon" name="material-symbols:image-outline" />
     </client-only>
   </div>
 </template>
